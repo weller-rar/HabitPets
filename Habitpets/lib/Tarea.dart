@@ -22,7 +22,7 @@ class _TareaState extends State<Tarea> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text("Habit"),
+        title: Text("Habit"), // --PONER BONITO--
       ),
 
       body: Container(
