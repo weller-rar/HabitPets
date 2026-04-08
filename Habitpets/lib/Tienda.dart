@@ -27,7 +27,7 @@ class _Tienda extends State<Tienda> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text("Store"),
+        title: Text("Store"), //-- PONER BONITO--
       ),
       body: Container(
         child: Center(
