@@ -11,7 +11,12 @@ class _Bienvenido extends State<Bienvenido> {
   final _formkey = GlobalKey<FormState>();
   late TextEditingController controller;
   late List<String> iconos = [
-    //Los iconos de las mascotas van aqui------------
+    //Los iconos de las mascotas van aqui------------------
+    "iconos/mascota/mascotas/perro.gif",
+    "iconos/mascota/mascotas/perro.gif",
+    "iconos/mascota/mascotas/perro.gif",
+    "iconos/mascota/mascotas/perro.gif",
+    "iconos/mascota/mascotas/perro.gif",
     "iconos/mascota/mascotas/perro.gif",
     "iconos/mascota/mascotas/perro.gif",
     "iconos/mascota/mascotas/perro.gif",
@@ -24,6 +29,7 @@ class _Bienvenido extends State<Bienvenido> {
     "iconos/mascota/mascotas/perro.gif",
   ];
   int ico = 0;
+ 
 
   @override
   void initState() {
@@ -123,6 +129,10 @@ class _Bienvenido extends State<Bienvenido> {
 }
 
 class ButtonsPet extends GButton {
+  ButtonsPet({super.key, required Widget customIcon})
+    : super(text: "", icon: Icons.circle, leading: customIcon);
+}
+class ButtonsPt extends GButton {
   ButtonsPet({super.key, required Widget customIcon})
     : super(text: "", icon: Icons.circle, leading: customIcon);
 }
