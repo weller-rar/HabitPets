@@ -92,7 +92,10 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icons.home,
               leading: Column(
                 children: [
-                  Image.asset("iconos/mascota/mascota_ico.png", width: 50),
+                  Image.asset(
+                    "iconos/mascota/mascotas/mascota_ico.png",
+                    width: 50,
+                  ),
                 ],
               ),
             ),
