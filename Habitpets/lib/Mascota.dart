@@ -31,7 +31,7 @@ class Mascota extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("iconos/mascota/mascotas/perro.gif", width: 350),
+              Image.asset(mascota, width: 350),
               Text(this.nombre), //--QUE EL NOMBRE SE VEA BIEN
             ],
           ),
