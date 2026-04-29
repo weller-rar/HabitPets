@@ -1,41 +1,21 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware # <-- 1. NUEVA IMPORTACIÓN
-from pydantic import BaseModel
-from typing import List
+from database import engine, Base
+from routes import usuarios, mascotas, tareas, tienda
 
-app = FastAPI()
+Base.metadata.create_all(bind=engine)
 
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"], # Permite que cualquier App se conecte
-    allow_credentials=True,
-    allow_methods=["*"], # Permite POST, GET, OPTIONS, etc.
-    allow_headers=["*"], # Permite todos los encabezados (headers)
+app = FastAPI(
+    title="HabitApp API",
+    description="API para gestión de hábitos con mascotas y recompensas",
+    version="1.0.0",
 )
 
-class Tarea(BaseModel):
-    icono: str
-    titulo: str
-    hora: str
+app.include_router(usuarios.router)
+app.include_router(mascotas.router)
+app.include_router(tareas.router)
+app.include_router(tienda.router)
 
-db_tareas = []
 
-@app.get("/")
-def read_root():
-    return {"message": "API de HabitPets funcionando"}
-
-@app.post("/login")
-def login(user: dict):
-    if user.get("username") == "admin" and user.get("password") == "12345":
-        return {"status": "ok", "message": "Bienvenido"}
-    return {"status": "error", "message": "Credenciales incorrectas"}
-
-@app.post("/tareas")
-def guardar_tarea(tarea: Tarea):
-    db_tareas.append(tarea)
-    return {"message": "Tarea guardada con éxito", "tarea": tarea}
-
-@app.get("/tareas", response_model=List[Tarea])
-def obtener_tareas():
-    return db_tareas
+@app.get("/", tags=["Root"])
+def root():
+    return {"mensaje": "HabitApp API funcionando ✅"}
